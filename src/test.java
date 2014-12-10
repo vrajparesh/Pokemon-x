@@ -18,7 +18,9 @@ public class test {
     
     public static void test2 () {
     
+        Type t = Type.ELECTRIC;
         
+        System.out.println ("Weakness >> " + t.multiplier ("" + Type.FLYING));
     
     }
 

@@ -1,5 +1,11 @@
 package core;
 
+import java.util.Arrays;
+
+/**
+ * Enum of hardcoded types.
+ */
+
 public enum Type {
     
     /*
@@ -11,6 +17,7 @@ public enum Type {
     /**
      * All the damn types with indexes, strengths, weakness, and no effects.
      */
+    UNKNOWN (0, null, null, null),
     NORMAL (1, new String [] {"ROCK", "STEEL"}, new String [] {}, new String [] {"GHOST"}),
     FIGHTING (2, new String [] {"POISON", "FLYING", "PHYSIC", "BUG", "FAIRY"}, new String [] {"NORMAL", "ICE", "ROCK", "DARK", "STEEL"}, new String [] {"GHOST"}),
     FLYING (3, new String [] {"ROCK", "ELECTRIC", "STEEL"}, new String [] {"GRASS", "FIGHTING", "BUG"}, new String [] {}),
@@ -30,9 +37,26 @@ public enum Type {
     DARK (17, new String [] {"FIGHTING", "DARK", "FAIRY"}, new String [] {"PHYSIC", "GHOST"}, new String [] {}),
     FAIRY (18, new String [] {"FIRE", "POISON", "STEEL"}, new String [] {"FIGHTING", "DRAGON", "DARK"}, new String [] {});
     
+    /**
+     * Names of all types.
+     */
+    String [] names = {"UNKNOWN", "NORMAL", "FIGHTING", "FLYING", "POISON", "GROUND", "ROCK", "BUG", "GHOST", "STEEL", "FIRE", "WATER", "GRASS", "ELECTRIC", "PHYSIC", "ICE", "DRAGON", "DARK", "FAIRY"};
+    
+    /**
+     * Index of type.
+     */
     private int index = 0;
+    /**
+     * Weak against.
+     */
     private String [] weak = null;
+    /**
+     * Strong against.
+     */
     private String [] strong = null;
+    /**
+     * It does not affect Pikachu!
+     */
     private String [] noeffect = null;
     
     Type (int index, String [] weak, String [] strong, String [] noeffect) {
@@ -49,6 +73,50 @@ public enum Type {
      */
     public int getIndex () {
         return index;
+    }
+    
+    public double multiplier (String attack) {
+        
+        double multiplier = 1.0D;
+        
+        /*
+         * Checks for weakness.
+         */
+        for (int i = 0; i < weak.length; i++) {
+            
+            if (Arrays.asList (weak).contains (attack)) {
+                multiplier /= 2;
+                break;
+            }
+            
+        }
+        
+        /*
+         * Checks for strength.
+         */
+        for (int j = 0; j < strong.length; j++) {
+            
+            if (Arrays.asList (strong).contains (attack)) {
+                multiplier *= 2;
+                break;
+            }
+            
+        }
+        
+        /*
+         * Checks for immunity.
+         */
+        for (int k = 0; k < weak.length; k++) {
+            
+            if (Arrays.asList (noeffect).contains (attack)) {
+                multiplier = 0;
+                break;
+            }
+            
+        }
+        
+        return multiplier;
+        
     }
     
 }

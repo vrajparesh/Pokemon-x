@@ -2,9 +2,7 @@ package core;
 
 public enum Attack {
     
-    FLAMETHROWER (90) {
-        int x = 0;
-    },
+    FLAMETHROWER (90),
     FIREFANG (65),
     FIREBLAST (110),
     SLASH (70),
@@ -31,6 +29,7 @@ public enum Attack {
     
     Attack (int dmg) {
         this.dmg = dmg;
+        type = Type.UNKNOWN;
     }
     
 }

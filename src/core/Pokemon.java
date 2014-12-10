@@ -30,6 +30,10 @@ public enum Pokemon
      */
     private int HP, attack, defence, sattack, sdefence, speed;
     /**
+     * Gender of pokemon.
+     */
+    private String gender = null;
+    /**
      * Typing of pokemon. Allows 2 types ONLY.
      */
     private Type type [] = new Type [2];
@@ -86,13 +90,6 @@ public enum Pokemon
      */
     public int getSpeed () {
         return speed;
-    }
-    
-    /**
-     * Verifies if the type of move is weak or not.
-     */
-    public boolean isWeak () {
-        return false;
     }
 
 }
