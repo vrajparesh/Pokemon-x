@@ -1,3 +1,5 @@
+package core;
+
 public enum Attack {
     
     FLAMETHROWER (90) {

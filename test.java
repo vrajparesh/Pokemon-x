@@ -1,6 +1,8 @@
+import core.*;
+
 public class test {
 
-    public static void main () {
+    public static void test1 () {
 
         for (Pokemon p : Pokemon.values ()) {
             System.out.println ("\nPokemon → " + p);
@@ -12,6 +14,12 @@ public class test {
             System.out.println ("\tSpeed → " + p.getSpeed ());
         }
 
+    }
+    
+    public static void test2 () {
+    
+        
+    
     }
 
 }

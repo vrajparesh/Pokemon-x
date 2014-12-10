@@ -1,8 +1,11 @@
+package core;
+
 /**
  * Hardcoded pokemon.
  */
 public enum Pokemon
 {
+    VIKRANT (0, 100, 100, 100, 100, 100, 100, Type.WATER, null),
     BULBASAUR (1, 45, 49, 49, 65, 65, 45, Type.GRASS, Type.POISON),
     IVYSAUR (2, 60, 62, 63, 80, 80, 60, Type.GRASS, Type.POISON),
     VENUSAUR (3, 80, 82, 83, 100, 100, 80, Type.GRASS, Type.POISON),
@@ -14,11 +17,26 @@ public enum Pokemon
     BLASTOISE (9, 79, 83, 100, 85, 105, 78, Type.WATER, null),
     ;
     
-    public String name = null;
+    /**
+     * Nickname of pokemon. If null, prints actual name.
+     */
+    public String nickname = null;
+    /**
+     * Index in pokedex.
+     */
     private int index = 0;
+    /**
+     * Stats of Pokemon.
+     */
     private int HP, attack, defence, sattack, sdefence, speed;
+    /**
+     * Typing of pokemon. Allows 2 types ONLY.
+     */
     private Type type [] = new Type [2];
     
+    /**
+     * Sets values automagically.
+     */
     Pokemon (int index, int HP, int attack, int defence, int sattack, int sdefence, int speed, Type type0, Type type1) {
         
         this.index = index;
@@ -69,6 +87,7 @@ public enum Pokemon
     public int getSpeed () {
         return speed;
     }
+    
     /**
      * Verifies if the type of move is weak or not.
      */
