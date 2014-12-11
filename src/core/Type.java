@@ -16,6 +16,8 @@ public enum Type {
     
     /**
      * All the damn types with indexes, strengths, weakness, and no effects.
+     * 
+     * {index, weak against, strong against, immune against}
      */
     UNKNOWN (0, null, null, null),
     NORMAL (1, new String [] {"ROCK", "STEEL"}, new String [] {}, new String [] {"GHOST"}),
@@ -36,6 +38,8 @@ public enum Type {
     DRAGON (16, new String [] {"STEEL"}, new String [] {"DRAGON"}, new String [] {"FAIRY"}),
     DARK (17, new String [] {"FIGHTING", "DARK", "FAIRY"}, new String [] {"PHYSIC", "GHOST"}, new String [] {}),
     FAIRY (18, new String [] {"FIRE", "POISON", "STEEL"}, new String [] {"FIGHTING", "DRAGON", "DARK"}, new String [] {});
+    
+    // ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     
     /**
      * Names of all types.
@@ -75,9 +79,9 @@ public enum Type {
         return index;
     }
     
-    public double multiplier (String attack) {
+    public double modifier (String attack) {
         
-        double multiplier = 1.0D;
+        double modifier = 1.0D;
         
         /*
          * Checks for weakness.
@@ -85,7 +89,7 @@ public enum Type {
         for (int i = 0; i < weak.length; i++) {
             
             if (Arrays.asList (weak).contains (attack)) {
-                multiplier /= 2;
+                modifier *= 2;
                 break;
             }
             
@@ -97,7 +101,7 @@ public enum Type {
         for (int j = 0; j < strong.length; j++) {
             
             if (Arrays.asList (strong).contains (attack)) {
-                multiplier *= 2;
+                modifier /= 2;
                 break;
             }
             
@@ -109,13 +113,13 @@ public enum Type {
         for (int k = 0; k < weak.length; k++) {
             
             if (Arrays.asList (noeffect).contains (attack)) {
-                multiplier = 0;
+                modifier = 0;
                 break;
             }
             
         }
         
-        return multiplier;
+        return modifier;
         
     }
     

@@ -3,9 +3,11 @@ package core;
 /**
  * Hardcoded pokemon.
  */
-public enum Pokemon
-{
-    VIKRANT (0, 100, 100, 100, 100, 100, 100, Type.WATER, null),
+public enum Pokemon {
+    /**
+     * All your pokemon.
+     */
+    MISSINGNO (0, 100, 100, 100, 100, 100, 100, Type.WATER, null),
     BULBASAUR (1, 45, 49, 49, 65, 65, 45, Type.GRASS, Type.POISON),
     IVYSAUR (2, 60, 62, 63, 80, 80, 60, Type.GRASS, Type.POISON),
     VENUSAUR (3, 80, 82, 83, 100, 100, 80, Type.GRASS, Type.POISON),
@@ -16,6 +18,8 @@ public enum Pokemon
     WARTORTLE (8, 59, 63, 80, 65, 80, 58, Type.WATER, null),
     BLASTOISE (9, 79, 83, 100, 85, 105, 78, Type.WATER, null),
     ;
+    
+    // -------------------------------------------------------------
     
     /**
      * Nickname of pokemon. If null, prints actual name.
@@ -41,7 +45,7 @@ public enum Pokemon
     /**
      * Sets values automagically.
      */
-    Pokemon (int index, int HP, int attack, int defence, int sattack, int sdefence, int speed, Type type0, Type type1) {
+    Pokemon (int index, int HP, int attack, int defence, int sattack, int sdefence, int speed, Type typeP, Type typeS) {
         
         this.index = index;
         this.HP = HP;
@@ -50,8 +54,8 @@ public enum Pokemon
         this.sattack = attack;
         this.sdefence = sdefence;
         this.speed = speed;
-        type [0] = type0;
-        type [1] = type1;
+        type [0] = typeP;
+        type [1] = typeS;
         
     }
     
@@ -90,6 +94,29 @@ public enum Pokemon
      */
     public int getSpeed () {
         return speed;
+    }
+    /**
+     * Returns primary type.
+     */
+    public Type getTypeP () {
+        return type [0];
+    }
+    /**
+     * Returns secondary type.
+     */
+    public Type getTypeS () {
+        if (type [1] == null) {
+            return Type.UNKNOWN;
+        } else {
+            return type [1];
+        }
+    }
+    public String getName () {
+        if (nickname == null) {
+            return null;
+        } else {
+            return nickname;
+        }
     }
 
 }
